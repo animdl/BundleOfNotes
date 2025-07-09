@@ -146,9 +146,42 @@ Filter by:
 - Report types
 - Filters
 ## Introduction to Defender for Office 365
-
-
-
+### Automated Investigation and Response (AIR)
+Includes a set of security playbooks that can be launched automatically in response to alerts. Can also trigger Entra workflows for password reset and MFA.
+#### Remediation Actions:
+- Soft delete email messages or clusters
+- Block URL (time-of-click)
+- Turn off external mail forwarding
+- Turn off delegation
+### Configure, Protect, and Detect
+- You can define policies to determine the behavior and protection level for predefined threats.
+- You can set fine-grained threat protection at the user, organization, recipient, and domain level.
+### Safe Attachments
+Is a policy that protects against unknown malware, viruses, and provides zero-day protection to safeguard your messaging system. All messages and attachments that don't have a known virus/malware signature are routed to a special environment and analyzed.
+#### Actions
+When creating a Safe Attachments policy, you have to select from the following options:
+- Off - Attachments won't be scanned
+- Monitor - Continues delivering the message after malware is detected and track the scan results
+- Block - Blocks the current and future emails and attachments with detected malware
+- Replace - Blocks the attachments with detected malware but deliver the message body
+- Dynamic Delivery - Immediately deliver the message body without attachments, then reattach after scanning
+#### Mail Flow Rule
+To bypass Safe Attachment processing for internal senders, you can skip filtering by creating a transport rule, or mail flow rule, in the Exchange Admin Center (EAC). Add **X-MS-Exchange-Organization-SkipSafeAttachmentProcessing** to the message header
+### Safe Links
+- Protects users from malicious URLs in a message or Office document. Malicious links are dynamically blocked.
+- Safe Links are both client and location agnostic.
+- Includes a default policy that can be edited but not removed.
+- Can be applied to messages sent within the organization
+- Prevent users from clicking through to the original URL
+- Add known safe URLs by flagging them as **Do not rewrite the following URL**
+- **X-MS-Exchange-Organization-SkipSafeLinksProcessing**
+### Anti-Phishing Policies
+- no default anti-phishing policy
+- Impersonation and Spoof detection comprise of the Anti-Phishing policies
+### Simulate Attacks
+- Threat Trackers - provides latest intelligence on prevailing cybersecurity issues
+- Threat Explorer - is a real-time report that allows you to identify and analyze recent threats
+- Attack Simulator - allows you to run realistic attack scenarios
 
 
 ---
@@ -159,7 +192,7 @@ Filter by:
 		- Common Event Format (CEF)
 		- Trusted Automated eXchange of Indicator Information (TAXII)
 		- azure activity
-		- microsoft defender services\
+		- microsoft defender services
 		- AWS, GCP
 - Log retention - after ingest, data is stored in log analytics
 	can query data using Kusto Query Language (KQL)
